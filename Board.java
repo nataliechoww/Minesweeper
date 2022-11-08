@@ -5,11 +5,10 @@ public class Board {
   private int x;
   private int y;
   private int numBombs;
-  private int countOfBombs = 0;
   private int numUncovered = 0;
 
   public Board() {
-    this.displayBoard = new String[8][10];
+    displayBoard = new String[8][10];
     for(int i = 0; i < 8; i++) {
       for(int j = 0; j < 10; j++) {
         displayBoard[i][j] = "X";
@@ -18,7 +17,7 @@ public class Board {
   }
   
   public Board(int numBombs) {
-    this.board = new String[8][10];
+    board = new String[8][10];
     x = 8;
     y = 10;
     this.numBombs = numBombs;
@@ -128,7 +127,7 @@ public class Board {
   public boolean getStatus(int numBombs, int xcord, int ycord) {
     this.numBombs = numBombs;
     boolean gameOver = false;
-    if(numUncovered == 80-numBombs || board[xcord][ycord].equals("💣")) {
+    if(numUncovered == 80-numBombs || (displayBoard[xcord][ycord] != "F" && board[xcord][ycord].equals("💣"))) {
       gameOver = true;
     }
     return gameOver;
