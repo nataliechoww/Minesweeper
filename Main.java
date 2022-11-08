@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args) {
     System.out.println("Welcome to my Minesweeper Replica! The aim of the game is to uncover every 'X' without a bomb in the 8 x 10 block. Watch out! There are 10 hidden bombs under the array of X's. You can either flag the X's if you think there is a bomb underneath, or uncover the X. When you uncover an X, there might be 1's, 2's, and so on. These numbers tell you how many bombs are next to that cell. Good luck!");
+    System.out.println();
     
     int[] arr = new int[2];
     String choice;
