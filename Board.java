@@ -16,6 +16,7 @@ public class Board {
     }
   }
   
+  //constructor for hidden board
   public Board(int numBombs) {
     board = new String[8][10];
     x = 8;
@@ -23,7 +24,7 @@ public class Board {
     this.numBombs = numBombs;
     board = new String[8][10];
   
-    // fill board with bombs
+    // fills board with bombs in random locations
     for (int i = 0; i < numBombs; i++) {
       x = (int) (Math.random() * 8);
       y = (int) (Math.random() * 10);
@@ -73,7 +74,7 @@ public class Board {
       }
     }
   }
-
+  //sets the board on the player's first entry so that cells around the first entry are revealed
   public void setFirstClick(int xcord, int ycord) {
     displayBoard[xcord][ycord] = board[xcord][ycord];
     numUncovered++;
@@ -111,7 +112,7 @@ public class Board {
     }
   }
   
-  //checks cell that player chose
+  //uncovers the cell the player chose
   public void uncover(int xcord, int ycord) {
     displayBoard[xcord][ycord] = board[xcord][ycord];
       numUncovered++;
@@ -123,7 +124,7 @@ public class Board {
     displayBoard[xcord][ycord] = "F";
   }
 
-  //checks to see if all flags are in place
+  //checks to see if player lost the game from uncovering a bomb OR if player won the game by uncovering all non-bomb cells
   public boolean getStatus(int numBombs, int xcord, int ycord) {
     this.numBombs = numBombs;
     boolean gameOver = false;
