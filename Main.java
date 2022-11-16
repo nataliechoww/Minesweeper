@@ -9,41 +9,49 @@ public class Main {
     String choice;
     Board board = new Board(10);
     Board displayBoard = new Board();
+    boolean firstClick = true;
 
     displayBoard.display1();
     int counts = 0;
 
     while(!board.getStatus(10, arr[0], arr[1])) {
-    
-    System.out.println("Type F to flag cell or type U to uncover cell:");
-    Scanner input = new Scanner(System.in);
+      
+      System.out.println("Type F to flag cell or type U to uncover cell:");
+      Scanner input = new Scanner(System.in);
       choice = input.nextLine();
 
-    System.out.println("Now type your two coordinates, pressing enter after typing each one:");
+      System.out.println("Now type your two coordinates, pressing enter after typing each one:");
     
-    for(int i = 0; i < 2; i++) {
-      Scanner input1 = new Scanner(System.in);
-      arr[i] = input1.nextInt();
-    }
+      for(int i = 0; i < 2; i++) {
+        Scanner input1 = new Scanner(System.in);
+        arr[i] = input1.nextInt();
+      }
       
-    if(choice.equals("F")) {
-      displayBoard.flag(arr[0],arr[1]);
-      displayBoard.display1();
-    }
+      if(choice.equals("F")) {
+        displayBoard.flag(arr[0],arr[1]);
+        displayBoard.display1();
+      }
 
-    if(choice.equals("U")) {
-      if(counts==0) {
-        displayBoard.setFirstClick(arr[0],arr[1]);
-        counts++;
-      }
-      else {
-        board.uncover(arr[0],arr[1]);
-      }
-      displayBoard.display1();
-    }
-      
+      if(choice.equals("U")) {
+        if(counts==0) {
+          displayBoard.setFirstClick(arr[0],arr[1]);
+          counts++;
+        }
+        else {
+          board.uncover(arr[0],arr[1]);
+        }
+        displayBoard.display1();
+      } 
     }
     System.out.println("You have lost:(");
   }
 }
 
+/* Stuff to do: 
+1. Problem: player choosing bomb on first click will lose
+   Solution: Make variable boolean so that if the player clicks on a bomb on the first click, boolean turns true and we reinitialize the board.
+2. Format the board so the coordinates are easy to read
+3. Flag unflag
+4. User determined dimension of board & # bombs
+5. Check surrounding of the user determined coordinate
+*/

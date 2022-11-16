@@ -6,12 +6,21 @@ public class Board {
   private int y;
   private int numBombs;
   private int numUncovered = 0;
+  public boolean firstPlay = true;
+//Make variable boolean so that if the player clicks on a bomb on the first click, boolean turns true and we reinitialize the board.
+  //like, I was thinking about either this be a public or private variable, yeah, I am wondering whether or not we should make it public so we can change it in the main file oh let's go to the main file
+  //what does the boolean do ohhhh ok; what is the problem rn?
+  //we should do all of this in the main class, not board class, cus then we can re call the function
+  //we should just make the variable in the main class
+  //also i need to shower but i take quick showers so ill be back in 10 mins - but i think we can make this within the while loop - like an if statement - we call the 
 
+  //wait i have another idea
+  //can i call u and u just put on headphones and dont speak
   public Board() {
     displayBoard = new String[8][10];
     for(int i = 0; i < 8; i++) {
       for(int j = 0; j < 10; j++) {
-        displayBoard[i][j] = "X";
+        displayBoard[i][j] = "⬜";
       }
     }
   }
@@ -145,7 +154,14 @@ public class Board {
   
   //prints displayed board
   public void display1() {
+    System.out.print("   ");
+    for (int col = 0; col < 9; col++) {
+      System.out.print(col + "  ");
+    }
+    System.out.println(9);
+    System.out.println("   —————————————————————————————");
       for (int i = 0; i < 8; i++) {
+        System.out.print(i + "| ");
         for (int j = 0; j < 10; j++) {
           System.out.print(displayBoard[i][j] + " ");
         }
